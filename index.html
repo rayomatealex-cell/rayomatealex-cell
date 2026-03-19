@@ -2,155 +2,104 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Feliz Nuevo Mes 💖</title>
+<title>Feliz Nuevo Mes</title>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial;
-  background: linear-gradient(270deg, #0d1117, #1a1a2e, #16213e);
-  background-size: 600% 600%;
-  animation: fondo 10s infinite;
-  color: white;
-  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0d1117;
+  color: #e6edf3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-@keyframes fondo {
-  0% {background-position: 0%;}
-  50% {background-position: 100%;}
-  100% {background-position: 0%;}
+.container {
+  max-width: 600px;
+  text-align: center;
+  padding: 40px;
+  border: 1px solid #30363d;
+  border-radius: 16px;
+  background: #161b22;
+  animation: fadeIn 2s ease;
 }
 
 h1 {
-  margin-top: 30px;
-  font-size: 3em;
-  color: #ff4da6;
-  animation: glow 2s infinite alternate;
+  font-size: 2.5em;
+  margin-bottom: 10px;
 }
 
-@keyframes glow {
-  from { text-shadow: 0 0 10px #ff4da6; }
-  to { text-shadow: 0 0 30px #ff99cc; }
-}
-
-.card {
-  background: rgba(255,255,255,0.05);
+.line {
+  width: 50px;
+  height: 3px;
+  background: #ff4da6;
   margin: 20px auto;
-  padding: 20px;
-  width: 80%;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.6;
 }
 
 button {
-  background: #ff4da6;
-  border: none;
-  padding: 12px 20px;
-  color: white;
-  border-radius: 10px;
+  margin-top: 25px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid #ff4da6;
+  color: #ff4da6;
+  border-radius: 8px;
   cursor: pointer;
-  margin: 10px;
 }
 
 button:hover {
-  background: #ff1a8c;
+  background: #ff4da6;
+  color: white;
 }
 
-.hidden { display: none; }
-
-.corazon {
-  position: fixed;
-  color: pink;
-  animation: subir 5s linear infinite;
+.extra {
+  margin-top: 20px;
+  display: none;
+  color: #ffccd5;
 }
 
-@keyframes subir {
-  0% { transform: translateY(100vh); opacity: 1;}
-  100% { transform: translateY(-10vh); opacity: 0;}
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
 }
-
-img {
-  width: 200px;
-  border-radius: 20px;
-  margin-top: 10px;
-}
-
 </style>
 </head>
 
 <body>
 
-<h1>🌸 Feliz Nuevo Mes 🌸</h1>
+<div class="container">
+  <h1>Feliz Nuevo Mes</h1>
+  <div class="line"></div>
 
-<div class="card">
-  <p>✨ Un nuevo mes, nuevas oportunidades ✨</p>
-  <p>💫 Gracias por estar aquí 💫</p>
-</div>
+  <p>
+    Un nuevo mes comienza.  
+    Nuevas oportunidades, nuevos momentos  
+    y muchas cosas por vivir.
+  </p>
 
-<div class="card">
-  <h2>📸 Foto especial</h2>
-  <img src="https://picsum.photos/300" alt="foto">
-</div>
+  <p>
+    Espero que este mes te traiga calma,  
+    alegría y todo lo que estás buscando.
+  </p>
 
-<div class="card">
-  <h2>💌 Mensaje secreto</h2>
-  <button onclick="mostrar()">Abrir mensaje</button>
-  <p id="msg" class="hidden">💕 Eres increíble 💕</p>
-</div>
+  <button onclick="mostrar()">Leer más</button>
 
-<div class="card">
-  <h2>⏳ Tiempo</h2>
-  <p id="tiempo"></p>
-</div>
-
-<div class="card">
-  <h2>🎉 Sorpresa</h2>
-  <button onclick="confetti()">Lanzar confetti 🎊</button>
-</div>
-
-<div class="card">
-  <h2>🎵 Música</h2>
-  <button onclick="play()">Reproducir</button>
-  <audio id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+  <p class="extra" id="extra">
+    Gracias por estar aquí.  
+    De verdad.
+  </p>
 </div>
 
 <script>
-function mostrar() {
-  document.getElementById("msg").style.display = "block";
+function mostrar(){
+  document.getElementById("extra").style.display = "block";
 }
-
-function play() {
-  document.getElementById("audio").play();
-}
-
-function confetti() {
-  for(let i=0;i<100;i++){
-    let c = document.createElement("div");
-    c.innerHTML = "🎉";
-    c.className = "corazon";
-    c.style.left = Math.random()*100+"%";
-    c.style.fontSize = (Math.random()*20+10)+"px";
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),5000);
-  }
-}
-
-setInterval(()=>{
-  let ahora = new Date();
-  document.getElementById("tiempo").innerText =
-    ahora.toLocaleString();
-},1000);
-
-// corazones automáticos
-setInterval(()=>{
-  let c = document.createElement("div");
-  c.innerHTML = "💖";
-  c.className = "corazon";
-  c.style.left = Math.random()*100+"%";
-  document.body.appendChild(c);
-  setTimeout(()=>c.remove(),5000);
-},500);
-
 </script>
 
 </body>
